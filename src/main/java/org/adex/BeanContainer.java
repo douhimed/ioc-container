@@ -1,7 +1,6 @@
 package org.adex;
 
-import org.adex.ioc.BeanContainerException.BeanIoCExceptionReason;
-import org.adex.ioc.annotations.Inject;
+import org.adex.annotations.Inject;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -17,7 +16,7 @@ final class BeanContainer {
 
     static Object getBeanByFullPath(String fullPath) {
         return Optional.ofNullable(BEANS.get(fullPath))
-                .orElseThrow(() -> new BeanContainerException(BeanIoCExceptionReason.NOT_A_BEAN));
+                .orElseThrow(() -> new BeanContainerException(BeanContainerException.BeanIoCExceptionReason.NOT_A_BEAN));
     }
 
     static Collection<String> getBeans() {

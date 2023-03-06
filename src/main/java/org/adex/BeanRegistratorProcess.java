@@ -1,6 +1,6 @@
 package org.adex;
 
-import org.adex.ioc.annotations.Bean;
+import org.adex.annotations.Bean;
 
 import java.io.File;
 import java.util.Objects;
