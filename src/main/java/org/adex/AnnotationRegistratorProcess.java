@@ -5,7 +5,7 @@ import org.adex.annotations.Bean;
 import java.io.File;
 import java.util.Objects;
 
-class BeanRegistratorProcess extends AbstractBeanProcess {
+class AnnotationRegistratorProcess extends AbstractBeanProcess {
 
     public static final String JAVA_CLASS_PATH = "java.class.path";
     public static final String SEMI_COLON = ";";

@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="04f4e4a8-7b26-4a5a-90d2-f3f1eed054c1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/adex/BeanContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/adex/BeanContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/adex/BeanInjectorProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/adex/BeanInjectorProcess.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +97,7 @@
       <updated>1678134820101</updated>
       <workItem from="1678134821604" duration="1024000" />
       <workItem from="1678213901497" duration="1258000" />
-      <workItem from="1678313741747" duration="5111000" />
+      <workItem from="1678313741747" duration="5950000" />
     </task>
     <servers />
   </component>

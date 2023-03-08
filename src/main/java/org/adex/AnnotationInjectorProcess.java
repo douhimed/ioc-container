@@ -3,7 +3,7 @@ package org.adex;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
-class BeanInjectorProcess extends AbstractBeanProcess {
+class AnnotationInjectorProcess extends AbstractBeanProcess {
 
     @Override
     protected void process() {

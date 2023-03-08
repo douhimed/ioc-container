@@ -9,8 +9,8 @@ public final class AnnotationApplicationContext implements ApplicationContext {
     private static AnnotationApplicationContext annotationApplicationContext;
 
     static {
-        final AbstractBeanProcess registrator = new BeanRegistratorProcess();
-        registrator.setNextProcessor(new BeanInjectorProcess());
+        final AbstractBeanProcess registrator = new AnnotationRegistratorProcess();
+        registrator.setNextProcessor(new AnnotationInjectorProcess());
         registrator.initProcessing();
     }
 
