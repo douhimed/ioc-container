@@ -1,7 +1,7 @@
 package org.adex;
 
 import java.lang.reflect.Field;
-import java.util.Map;
+import java.util.Arrays;
 
 class BeanInjectorProcess extends AbstractBeanProcess {
 
@@ -11,23 +11,19 @@ class BeanInjectorProcess extends AbstractBeanProcess {
     }
 
     private static void injectDependencies() {
-        final Map<String, Object> beans = BeanContainer.getBeanContainer();
-        beans.forEach((key, bean) -> {
-            for (Field field : bean.getClass().getDeclaredFields()) {
-                if(BeanContainer.isABeanAndInjectionIsRequiested(field)) {
-                    setDependency(bean, field, beans);
-                }
-            }
-        });
+        BeanContainer.getBeanContainer().forEach((key, bean) ->
+                Arrays.stream(bean.getClass().getDeclaredFields())
+                        .filter(BeanContainer::isABeanAndInjectionIsRequested)
+                        .forEach(field -> setDependency(bean, field)));
     }
 
-    private static void setDependency(Object bean, Field field, Map<String, Object> beans) {
+    private static void setDependency(Object bean, Field field) {
         try {
             boolean accessibility = field.canAccess(bean);
             field.setAccessible(true);
-            field.set(bean, BeanContainer.getBeanByFullPath(field.getType().getName()));
+            field.set(bean, BeanContainer.getBeanByFullPath(field.getType().getName()).getClass().getDeclaredConstructor().newInstance());
             field.setAccessible(accessibility);
-        } catch (IllegalAccessException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

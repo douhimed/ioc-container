@@ -11,7 +11,7 @@ class BeanContainerException extends RuntimeException {
     }
 
     public enum BeanIoCExceptionReason {
-        NOT_A_BEAN("Not a bean");
+        NOT_A_BEAN("NOT A BEAN");
 
         private String reason;
 

@@ -3,7 +3,6 @@ package org.adex;
 import org.adex.annotations.Inject;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 final class BeanContainer {
@@ -23,7 +22,7 @@ final class BeanContainer {
         return BEANS.keySet();
     }
 
-    static void registerBean(Class<?> clazz) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    static void registerBean(Class<?> clazz) throws Exception {
         BEANS.put(clazz.getName(), clazz.getDeclaredConstructor().newInstance());
     }
 
@@ -31,7 +30,7 @@ final class BeanContainer {
         return Collections.unmodifiableMap(BEANS);
     }
 
-    static boolean isABeanAndInjectionIsRequiested(Field field) {
+    static boolean isABeanAndInjectionIsRequested(Field field) {
         return BEANS.containsKey(field.getType().getName()) && field.isAnnotationPresent(Inject.class);
     }
 

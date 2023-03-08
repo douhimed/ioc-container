@@ -22,8 +22,7 @@ class BeanRegistratorProcess extends AbstractBeanProcess {
     }
 
     static void initBeanRegistration() {
-        final File classPathFile = new File(CLASS_PATH_PROPERTY);
-        registerBeans(classPathFile);
+        registerBeans(new File(CLASS_PATH_PROPERTY));
     }
 
     static void registerBeans(File folder) {
