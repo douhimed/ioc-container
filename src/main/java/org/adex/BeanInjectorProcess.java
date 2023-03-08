@@ -11,7 +11,8 @@ class BeanInjectorProcess extends AbstractBeanProcess {
     }
 
     private static void injectDependencies() {
-        BeanContainer.getBeanContainer().forEach((key, bean) ->
+        BeanContainer.getBeanContainer()
+                .forEach((key, bean) ->
                 Arrays.stream(bean.getClass().getDeclaredFields())
                         .filter(BeanContainer::isABeanAndInjectionIsRequested)
                         .forEach(field -> setDependency(bean, field)));
@@ -21,7 +22,7 @@ class BeanInjectorProcess extends AbstractBeanProcess {
         try {
             boolean accessibility = field.canAccess(bean);
             field.setAccessible(true);
-            field.set(bean, BeanContainer.getBeanByFullPath(field.getType().getName()).getClass().getDeclaredConstructor().newInstance());
+            field.set(bean, field.getType().getDeclaredConstructor().newInstance());
             field.setAccessible(accessibility);
         } catch (Exception e) {
             throw new RuntimeException(e);
