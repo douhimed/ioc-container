@@ -2,8 +2,10 @@ package org.adex;
 
 import org.adex.annotations.Bean;
 
+import javax.swing.text.html.Option;
 import java.io.File;
 import java.util.Objects;
+import java.util.Optional;
 
 class AnnotationRegistratorProcess extends AbstractBeanProcess {
 
@@ -27,13 +29,16 @@ class AnnotationRegistratorProcess extends AbstractBeanProcess {
 
     static void registerBeans(File folder) {
         if (Objects.nonNull(folder.listFiles())) {
-            for (final File fileEntry : folder.listFiles()) {
-                if (fileEntry.isDirectory()) {
-                    registerBeans(fileEntry);
-                } else {
-                    registerBeanIfEligible(fileEntry);
-                }
-            }
+            Optional.ofNullable(folder.listFiles())
+                    .ifPresent(files -> {
+                        for (final File fileEntry : files) {
+                            if (fileEntry.isDirectory()) {
+                                registerBeans(fileEntry);
+                            } else {
+                                registerBeanIfEligible(fileEntry);
+                            }
+                        }
+                    });
         }
     }
 

@@ -7,9 +7,6 @@ import java.util.*;
 
 final class BeanContainer {
 
-    /**
-     * org.douhi.services.ProductServices : new Instance ProductServices
-     */
     private static final Map<String, Object> BEANS;
 
     static {
